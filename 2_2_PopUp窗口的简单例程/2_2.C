@@ -148,8 +148,7 @@ long InsertWndList(DFrameInfo *pWndInfo)
 		_WndObjTbl->size += 5;
 	}
 	_WndObjTbl->WndObjList[_WndObjTbl->length] = pWndInfo;
-	_WndObjTbl->length++;
-	return _WndObjTbl->length;
+	return (_WndObjTbl->length++);
 }
 int BringToActive(My_WndHandle tHandle)
 {
