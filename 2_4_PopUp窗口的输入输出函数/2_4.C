@@ -84,9 +84,9 @@ int Mem_save_video(int startx,int endx,int starty,int endy,videoInfo **buf)
 	register int i,j,k=0;
 	char far *tPTR = NULL;
 	*buf = (videoInfo*)malloc((endx-startx+1)*(endy*starty+1)*2*sizeof(videoInfo));
-	for (i=starty;i<endy;i++)
+	for (i=starty;i<=endy;i++)
 	{
-		for (j=startx;j<endx;j++)
+		for (j=startx;j<=endx;j++)
 		{
 			tPTR = videobase+i*2+j*160;
 			(*buf)[k].ASCII = *tPTR;
@@ -99,9 +99,9 @@ int Mem_restore_video(int startx,int endx,int starty,int endy,videoInfo **buf)
 {
 	register int i,j,k=0;
 	char far *tPTR = NULL;
-	for (i=starty;i<endy;i++)
+	for (i=starty;i<=endy;i++)
 	{
-		for (j=startx;j<endx;j++)
+		for (j=startx;j<=endx;j++)
 		{
 			tPTR = videobase+i*2+j*160;
 			*tPTR = (*buf)[k].ASCII;
@@ -141,7 +141,7 @@ char get_WNDch(My_WndHandle my_Hwnd)
 		default:
 			if (_WndObjTbl->WndObjList[my_Hwnd]->cury+_WndObjTbl->WndObjList[my_Hwnd]->starty < _WndObjTbl->WndObjList[my_Hwnd]->endy-1)
 			{
-				Mem_write_video(_WndObjTbl->WndObjList[my_Hwnd]->startx+_WndObjTbl->WndObjList[my_Hwnd]->curx,_WndObjTbl->WndObjList[my_Hwnd]->starty+_WndObjTbl->WndObjList[my_Hwnd]->cury,t,7);
+				Mem_write_video(_WndObjTbl->WndObjList[my_Hwnd]->startx+_WndObjTbl->WndObjList[my_Hwnd]->curx+1,_WndObjTbl->WndObjList[my_Hwnd]->starty+_WndObjTbl->WndObjList[my_Hwnd]->cury+1,t,7);
 				_WndObjTbl->WndObjList[my_Hwnd]->cury++;
 			}
 		}
