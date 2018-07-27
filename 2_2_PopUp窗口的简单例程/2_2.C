@@ -62,9 +62,9 @@ int Mem_save_video(int startx,int endx,int starty,int endy,videoInfo **buf)
 	register int i,j,k=0;
 	char far *tPTR = NULL;
 	*buf = (videoInfo*)malloc((endx-startx+1)*(endy*starty+1)*2*sizeof(videoInfo));
-	for (i=starty;i<endy;i++)
+	for (i=starty;i<=endy;i++)
 	{
-		for (j=startx;j<endx;j++)
+		for (j=startx;j<=endx;j++)
 		{
 			tPTR = videobase+i*2+j*160;
 			(*buf)[k].ASCII = *tPTR;
@@ -77,9 +77,9 @@ int Mem_restore_video(int startx,int endx,int starty,int endy,videoInfo **buf)
 {
 	register int i,j,k=0;
 	char far *tPTR = NULL;
-	for (i=starty;i<endy;i++)
+	for (i=starty;i<=endy;i++)
 	{
-		for (j=startx;j<endx;j++)
+		for (j=startx;j<=endx;j++)
 		{
 			tPTR = videobase+i*2+j*160;
 			*tPTR = (*buf)[k].ASCII;
