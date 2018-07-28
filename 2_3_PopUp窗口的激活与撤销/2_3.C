@@ -107,7 +107,7 @@ int Mem_write_video(int x,int y,char *pStr,int Attrib)
 	tPTR = videobase + x*160 + y*2;
 	for (i=0;i<len;i++,tPTR++)
 	{
-		*(tPTR++) = pStr[0];
+		*(tPTR++) = pStr[i];
 		*tPTR = Attrib;
 	}
 	return 0;
